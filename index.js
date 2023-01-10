@@ -87,10 +87,23 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
+// Define Variables
+var totalProfit = 0;
+
+//  Engine
+for (var i = 0; i < finances.length; i++) {
+    for (var j = 0; j < finances[i].length; j++) {
+        if (typeof finances[i][j] !== "string") {
+            totalProfit += finances[i][j];
+        }
+    }
+}
+
 // * The total number of months included in the dataset.
 console.log(finances.length);
 
 // * The net total amount of Profit/Losses over the entire period.
+console.log(totalProfit);
 
 // * The average of the **changes** in Profit/Losses over the entire period.
 
