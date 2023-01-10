@@ -88,6 +88,8 @@ var finances = [
 ];
 
 // Define Variables
+var maxDate;
+var maxProfit = 0;
 var prevMonth;
 var totalChange = 0;
 var totalProfit = 0;
@@ -101,6 +103,10 @@ for (var i = 0; i < finances.length; i++) {
                 totalChange += (finances[i][j] - prevMonth);
             }
             prevMonth = finances[i][j];
+            if (finances[i][j] > maxProfit) {
+                maxProfit = finances[i][j];
+                maxDate = finances[i][j-1];
+            }
         }
     }
 }
@@ -115,6 +121,7 @@ console.log(totalProfit);
 console.log((totalChange / (finances.length - 1)).toFixed(2));
 
 // * The greatest increase in profits (date and amount) over the entire period.
+console.log(maxDate + ", " + maxProfit);
 
 // * The greatest decrease in losses (date and amount) over the entire period.
 
