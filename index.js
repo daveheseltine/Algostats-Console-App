@@ -117,19 +117,19 @@ for (var i = 0; i < finances.length; i++) {
 }
 
 // * The total number of months included in the dataset.
-console.log(finances.length);
+// console.log(finances.length);
 
 // * The net total amount of Profit/Losses over the entire period.
-console.log(totalProfit);
+// console.log(totalProfit);
 
 // * The average of the **changes** in Profit/Losses over the entire period.
-console.log((totalChange / (finances.length - 1)).toFixed(2));
+// console.log((totalChange / (finances.length - 1)).toFixed(2));
 
 // * The greatest increase in profits (date and amount) over the entire period.
-console.log(maxDate + ", " + maxProfit);
+// console.log(maxDate + ", " + maxProfit);
 
 // * The greatest decrease in losses (date and amount) over the entire period.
-console.log(minDate + ", " + minProfit);
+// console.log(minDate + ", " + minProfit);
 
 // When you open your code in the browser your resulting analysis should look similar to the following:
 
@@ -144,3 +144,4 @@ console.log(minDate + ", " + minProfit);
 //   ```
 
 // Your final code should print the analysis to the console.
+console.log("```text\nFinancial Analysis\n----------------------------\nTotal Months: " + finances.length + "\nTotal: $" + totalProfit + "\nAverage  Change: $" + (totalChange / (finances.length - 1)).toFixed(2) + "\nGreatest Increase in Profits: " + maxDate + " ($" + maxProfit + ")\n Greatest Decrease in Profits: " + minDate + " ($" + minProfit + ")\n```");
