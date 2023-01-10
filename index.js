@@ -88,6 +88,8 @@ var finances = [
 ];
 
 // Define Variables
+var prevMonth;
+var totalChange = 0;
 var totalProfit = 0;
 
 //  Engine
@@ -95,6 +97,10 @@ for (var i = 0; i < finances.length; i++) {
     for (var j = 0; j < finances[i].length; j++) {
         if (typeof finances[i][j] !== "string") {
             totalProfit += finances[i][j];
+            if (i > 0) {
+                totalChange += (finances[i][j] - prevMonth);
+            }
+            prevMonth = finances[i][j];
         }
     }
 }
@@ -106,6 +112,7 @@ console.log(finances.length);
 console.log(totalProfit);
 
 // * The average of the **changes** in Profit/Losses over the entire period.
+console.log((totalChange / (finances.length - 1)).toFixed(2));
 
 // * The greatest increase in profits (date and amount) over the entire period.
 
