@@ -90,6 +90,8 @@ var finances = [
 // Define Variables
 var maxDate;
 var maxProfit = 0;
+var minDate;
+var minProfit = 0;
 var prevMonth;
 var totalChange = 0;
 var totalProfit = 0;
@@ -106,6 +108,9 @@ for (var i = 0; i < finances.length; i++) {
             if (finances[i][j] > maxProfit) {
                 maxProfit = finances[i][j];
                 maxDate = finances[i][j-1];
+            } else if (finances[i][j] < minProfit) {
+                minProfit = finances[i][j];
+                minDate = finances[i][j-1];
             }
         }
     }
@@ -124,6 +129,7 @@ console.log((totalChange / (finances.length - 1)).toFixed(2));
 console.log(maxDate + ", " + maxProfit);
 
 // * The greatest decrease in losses (date and amount) over the entire period.
+console.log(minDate + ", " + minProfit);
 
 // When you open your code in the browser your resulting analysis should look similar to the following:
 
