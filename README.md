@@ -65,8 +65,8 @@ The final code should print the analysis to the console.
 ___
 # Deployment
 ## URL
-* The URL of the deployed application: https://lulose.github.io/04-Challenge/
-* The URL of the GitHub Repository: https://github.com/lulose/04-Challenge
+* The URL of the deployed application: https://daveheseltine.github.io/Algostats-Console-App/
+* The URL of the GitHub Repository: https://github.com/daveheseltine/Algostats-Console-App
 
 </br>
 
