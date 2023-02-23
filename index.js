@@ -1,3 +1,4 @@
+// Define Data:
 var finances = [
 ['Jan-2010', 867884],
 ['Feb-2010', 984655],
@@ -87,61 +88,70 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-// Define Variables
-var maxDate;
-var maxProfit = 0;
-var minDate;
-var minProfit = 0;
-var prevMonth;
-var totalChange = 0;
-var totalProfit = 0;
+// Define Variables:
+let changeCount = 0;
+let financesCount = 0;
+let maxChange = 0;
+let maxDate;
+let minChange = 0;
+let minDate;
 
-//  Engine
-for (var i = 0; i < finances.length; i++) {
-    for (var j = 0; j < finances[i].length; j++) {
-        if (typeof finances[i][j] !== "string") {
-            totalProfit += finances[i][j];
-            if (i > 0) {
-                totalChange += (finances[i][j] - prevMonth);
-            }
-            prevMonth = finances[i][j];
-            if (finances[i][j] > maxProfit) {
-                maxProfit = finances[i][j];
-                maxDate = finances[i][j-1];
-            } else if (finances[i][j] < minProfit) {
-                minProfit = finances[i][j];
-                minDate = finances[i][j-1];
-            }
+// For loop over the "finances" array:
+for (let i = 0; i < finances.length; i++) {
+  for (let j = 0; j < 2; j++) {
+    if (!isNaN(finances[i][j])) {
+
+      // Count profits:
+      financesCount += finances[i][j];
+
+      // Changes between each month:
+      if (i > 0) {
+        let change = finances[i][j] - finances[i-1][j];
+        changeCount += change;
+
+        // Track maxDate and maxChange:
+        if (change > maxChange) {
+          maxChange = change;
+          maxDate = finances[i][j-1];
         }
+
+        // Track minDate and minChange:
+        if (change < minChange) {
+          minChange = change;
+          minDate = finances[i][j-1];
+        }
+      }
     }
+  }
 }
 
-// * The total number of months included in the dataset.
-// console.log(finances.length);
 
-// * The net total amount of Profit/Losses over the entire period.
-// console.log(totalProfit);
+// Acceptance Criteria:
+  // * The total number of months included in the dataset.
+  console.log(finances.length);
 
-// * The average of the **changes** in Profit/Losses over the entire period.
-// console.log((totalChange / (finances.length - 1)).toFixed(2));
+  // * The net total amount of Profit/Losses over the entire period.
+  console.log(financesCount);
 
-// * The greatest increase in profits (date and amount) over the entire period.
-// console.log(maxDate + ", " + maxProfit);
+  // * The average of the **changes** in Profit/Losses over the entire period.
+  console.log((changeCount / (finances.length - 1)).toFixed(2));
 
-// * The greatest decrease in losses (date and amount) over the entire period.
-// console.log(minDate + ", " + minProfit);
+  // * The greatest increase in profits (date and amount) over the entire period.
+  console.log(maxDate + ", " + maxChange);
 
-// When you open your code in the browser your resulting analysis should look similar to the following:
+  // * The greatest decrease in losses (date and amount) over the entire period.
+  console.log(minDate + ", " + minChange);
 
-//   ```text
-//   Financial Analysis
-//   ----------------------------
-//   Total Months: 25
-//   Total: $2561231
-//   Average  Change: $-2315.12
-//   Greatest Increase in Profits: Feb-2012 ($1926159)
-//   Greatest Decrease in Profits: Sep-2013 ($-2196167)
-//   ```
-
-// Your final code should print the analysis to the console.
-console.log("```text\nFinancial Analysis\n----------------------------\nTotal Months: " + finances.length + "\nTotal: $" + totalProfit + "\nAverage  Change: $" + (totalChange / (finances.length - 1)).toFixed(2) + "\nGreatest Increase in Profits: " + maxDate + " ($" + maxProfit + ")\n Greatest Decrease in Profits: " + minDate + " ($" + minProfit + ")\n```");
+  // When you open your code in the browser your resulting analysis should look similar to the following:
+  //   ```text
+  //   Financial Analysis
+  //   ----------------------------
+  //   Total Months: 25
+  //   Total: $2561231
+  //   Average  Change: $-2315.12
+  //   Greatest Increase in Profits: Feb-2012 ($1926159)
+  //   Greatest Decrease in Profits: Sep-2013 ($-2196167)
+  //   ```
+  
+  // Your final code should print the analysis to the console:
+  console.log("```text\nFinancial Analysis\n----------------------------\nTotal Months: " + finances.length + "\nTotal: $" + financesCount + "\nAverage  Change: $" + (changeCount / (finances.length - 1)).toFixed(2) + "\nGreatest Increase in Profits: " + maxDate + " ($" + maxChange + ")\nGreatest Decrease in Profits: " + minDate + " ($" + minChange + ")\n```");
